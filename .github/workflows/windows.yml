@@ -1,0 +1,14 @@
+name: Windows CI/CD
+on:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: windows-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  windows:
+    uses: pgextwin/build/.github/workflows/build-extension.yml@ca3c65198882d6be9411d5f20a42f484c3a04203
+    with:
+      extension_config_path: config/extension.json
+      test_contract_path: config/test-contract.json
