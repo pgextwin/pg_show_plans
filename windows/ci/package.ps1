@@ -59,6 +59,9 @@ foreach ($sqlFile in $sqlFiles) {
 
 New-Item -ItemType Directory -Force -Path (Join-Path $stage "lib") | Out-Null
 Copy-Item (Join-Path $UpstreamDir "pg_show_plans.dll") (Join-Path $stage "lib/pg_show_plans.dll") -Force
+# Windows Git checkout may use CRLF; distribute the exact pinned LICENSE blob.
+& git -C $UpstreamDir -c core.autocrlf=false checkout-index --force -- LICENSE
+if ($LASTEXITCODE -ne 0) { throw "Could not restore exact upstream LICENSE bytes." }
 Copy-Item (Join-Path $UpstreamDir "LICENSE") (Join-Path $stage "LICENSE") -Force
 if (Test-Path (Join-Path $UpstreamDir "README.md")) {
     Copy-Item (Join-Path $UpstreamDir "README.md") (Join-Path $stage "UPSTREAM-README.md") -Force
