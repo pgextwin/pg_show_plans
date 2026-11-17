@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   signed_main_source:
-    name: Authenticate owner Issue 1 and attest true protected main (NONPUBLISHING)
+    name: Authenticate owner Issue 2 and attest true protected main (NONPUBLISHING)
     # Owner, issue, main, attempt and fleet identity are authenticated centrally.
     if: ${{ github.event_name == 'issue_comment' }}
     permissions:
@@ -29,6 +29,6 @@ jobs:
       artifact-metadata: write
     uses: pgextwin/build/.github/workflows/chat-signed-main-source.yml@ca3c65198882d6be9411d5f20a42f484c3a04203
     with:
-      request_issue: 1
+      request_issue: 2
       extension_config_path: config/extension.json
       test_contract_path: config/test-contract.json
