@@ -1,0 +1,37 @@
+{
+  "contractVersion": 2,
+  "extension": "pg_show_plans",
+  "smokeTest": {
+    "script": "windows/ci/smoke-test.ps1"
+  },
+  "runtimeRequirements": {
+    "extensionCreation": "required",
+    "preload": "shared",
+    "backgroundWorker": false,
+    "clientExecutable": {
+      "required": false,
+      "packagePaths": []
+    }
+  },
+  "testSetup": {
+    "preload": "shared",
+    "backgroundWorker": false,
+    "settings": []
+  },
+  "coverage": {
+    "createExtension": "covered",
+    "backgroundWorker": "not-applicable",
+    "clientExecutable": "not-applicable",
+    "serverLogAssertions": "not-applicable",
+    "upgrade": "not-covered"
+  },
+  "functionalScenarios": [
+    {
+      "id": "plans-function-and-view",
+      "description": "Creates SQL version 2.1 under shared preload and invokes pg_show_plans() and pg_show_plans_q.",
+      "evidence": [
+        "sql-result"
+      ]
+    }
+  ]
+}

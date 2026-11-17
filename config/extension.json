@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "name": "pg_show_plans",
+  "upstream": {
+    "repository": "cybertec-postgresql/pg_show_plans",
+    "ref": "v2.1.8",
+    "version": "2.1.8",
+    "commit": "92ecb21f8f2307a4bc7db8f01623599e75930fc2"
+  },
+  "postgresql": {
+    "majors": [
+      15,
+      16,
+      17,
+      18
+    ]
+  },
+  "windows": {
+    "architecture": "x64"
+  },
+  "license": {
+    "verifyAgainstUpstream": true,
+    "upstreamPath": "LICENSE"
+  }
+}
