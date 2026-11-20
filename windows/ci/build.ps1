@@ -26,10 +26,14 @@ $def = Join-Path $source 'pg_show_plans.def'
 $dll = Join-Path $source 'pg_show_plans.dll'
 $obj = Join-Path $source 'pg_show_plans.obj'
 $sourceFile = Join-Path $source 'pg_show_plans.c'
+$pgVersion = (& (Join-Path $PgRoot "bin\pg_config.exe") --version).Trim()
+if ($pgVersion -notmatch '^PostgreSQL\s+(14|15|16|17|18|19)(?:\.|\s)') { throw "Unsupported PostgreSQL version: $pgVersion" }
+$clStdLine = if ([int]$Matches[1] -ge 19) { 'set "CL=/std:c11"' } else { '' }
 $buildCmd = Join-Path $runTemp 'pg-show-plans-private-build.cmd'
 @"
 @echo off
 call "$devCmd" -arch=x64 -host_arch=x64 >nul
+$clStdLine
 if errorlevel 1 exit /b %errorlevel%
 cl /nologo /O2 /MD /DWIN32 /DWIN32_NO_STATUS /D_CRT_SECURE_NO_WARNINGS ^
  /I"$pgRoot\include\server\port\win32_msvc" ^
