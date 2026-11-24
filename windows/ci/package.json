@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "distribution": "dll-sql",
+  "sqlVersion": "2.1",
+  "files": [
+    {
+      "source": "upstream",
+      "path": "pg_show_plans.dll",
+      "destination": "lib/pg_show_plans.dll",
+      "targets": [
+        "install",
+        "zip"
+      ]
+    },
+    {
+      "source": "upstream",
+      "path": "pg_show_plans.control",
+      "destination": "share/extension/pg_show_plans.control",
+      "targets": [
+        "install",
+        "zip"
+      ]
+    },
+    {
+      "source": "upstream",
+      "path": "pg_show_plans--*.sql",
+      "destination": "share/extension/{fileName}",
+      "targets": [
+        "install",
+        "zip"
+      ],
+      "expectedCount": 4
+    },
+    {
+      "source": "license",
+      "path": "LICENSE",
+      "destination": "LICENSE",
+      "targets": [
+        "zip"
+      ]
+    },
+    {
+      "source": "upstream",
+      "path": "README.md",
+      "destination": "UPSTREAM-README.md",
+      "targets": [
+        "zip"
+      ],
+      "optional": true
+    }
+  ],
+  "packageInfo": [
+    "pg_show_plans Windows package",
+    "==============================",
+    "",
+    "Upstream repository: {upstreamRepository}",
+    "Upstream ref:        {upstreamRef}",
+    "Upstream commit:     {upstreamCommit}",
+    "pg_show_plans version: {version}",
+    "SQL default_version: 2.1",
+    "PostgreSQL major:    {pgMajor}",
+    "PostgreSQL tested:   {pgTested}",
+    "Architecture:        Windows x64",
+    "Compiler:            MSVC x64",
+    "License:             PostgreSQL-style; see LICENSE",
+    "",
+    "This is an unofficial pgextwin Windows package built from the official pg_show_plans source.",
+    "Requires shared_preload_libraries=pg_show_plans."
+  ]
+}
